@@ -55,7 +55,7 @@
     "framer-motion": "^12.40.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.446.0",
-    "next": "13.5.1",
+    "next": "15.5.18",
     "next-themes": "^0.3.0",
     "postcss": "8.5.10",
     "react": "18.2.0",
