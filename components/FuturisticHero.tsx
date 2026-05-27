@@ -47,8 +47,9 @@ export default function FuturisticHero({ examples = ['neal_wu', 'tourist'] }: { 
     const canvasEl = canvasRef.current;
     if (!canvasEl) return;
     const canvas = canvasEl;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const context2d = canvas.getContext('2d');
+    if (!context2d) return;
+    const ctx: CanvasRenderingContext2D = context2d;
     let w = (canvas.width = canvas.clientWidth * devicePixelRatio);
     let h = (canvas.height = canvas.clientHeight * devicePixelRatio);
     ctx.scale(devicePixelRatio, devicePixelRatio);
