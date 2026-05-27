@@ -30,7 +30,8 @@ export default function FuturisticHero({ examples = ['neal_wu', 'tourist'] }: { 
     const el = containerRef.current;
     if (!el) return;
     function onMove(e: MouseEvent) {
-      const rect = el.getBoundingClientRect();
+      const rect = containerRef.current?.getBoundingClientRect();
+      if (!rect) return;
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
       mx.set(e.clientX - cx);
