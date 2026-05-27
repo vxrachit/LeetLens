@@ -1,6 +1,7 @@
 import { LeetCodeProfile, TopicStats, ContestEntry, SubmissionCalendar, ProblemStats, RecentSubmission } from './types';
 import { LEETCODE_ASSETS_URL, LEETCODE_BASE_URL } from '@/lib/env';
 import { LEETCODE_GRAPHQL_URL, LEETCODE_ORIGIN, LEETCODE_REFERER } from '@/lib/server/env';
+import { logger } from '@/lib/logger';
 
 const CACHE_DURATION_MS = 0; // Disabled for testing
 
@@ -43,7 +44,7 @@ async function fetchGraphQL<T>(query: string, variables: Record<string, unknown>
 
   const rawText = await res.text();
   if (!res.ok) {
-    console.warn('LeetCode GraphQL non-200 response:', {
+    logger.warn('LeetCode GraphQL non-200 response:', {
       status: res.status,
       snippet: rawText.slice(0, 300),
     });
@@ -54,16 +55,16 @@ async function fetchGraphQL<T>(query: string, variables: Record<string, unknown>
   try {
     json = JSON.parse(rawText);
   } catch {
-    console.warn('LeetCode GraphQL invalid JSON response:', rawText.slice(0, 300));
+    logger.warn('LeetCode GraphQL invalid JSON response:', rawText.slice(0, 300));
     throw new Error('LeetCode API error: Invalid JSON response');
   }
   if (json.errors?.length) {
-    console.warn('LeetCode GraphQL errors payload:', json.errors);
+    logger.warn('LeetCode GraphQL errors payload:', json.errors);
     throw new Error(`GraphQL errors: ${json.errors.map((e: { message: string }) => e.message).join(', ')}`);
   }
 
   if (!json.data) {
-    console.warn('LeetCode GraphQL empty data payload:', rawText.slice(0, 300));
+    logger.warn('LeetCode GraphQL empty data payload:', rawText.slice(0, 300));
     throw new Error('LeetCode API error: Empty data payload');
   }
 
@@ -311,7 +312,7 @@ export async function fetchLeetCodeProfile(username: string): Promise<LeetCodePr
     }
 
     if (errors.length > 0) {
-      console.warn('LeetCode partial errors:', errors.join('; '));
+      logger.warn('LeetCode partial errors:', errors.join('; '));
     }
 
     const profile = profileData.matchedUser.profile;
@@ -450,7 +451,7 @@ export async function fetchLeetCodeProfile(username: string): Promise<LeetCodePr
     return result;
 
   } catch (err) {
-    console.error('LeetCode API failed:', err instanceof Error ? err.message : err);
+    logger.error('LeetCode API failed:', err instanceof Error ? err.message : err);
     throw new Error(`Failed to fetch LeetCode profile for ${cleanUsername}: ${err instanceof Error ? err.message : 'Unknown error'}`);
   }
 }

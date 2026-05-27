@@ -3,6 +3,7 @@ import { fetchLeetCodeProfile } from '@/lib/leetcode/client';
 import { computeAllMetrics } from '@/lib/metrics';
 import { determineArchetype, generateBehavioralInsights, ARCHETYPES } from '@/lib/archetypes';
 import { GITHUB_ACCESS_TOKEN_COOKIE, verifyRequiredRepoStar } from '@/lib/github-auth';
+import { logger } from '@/lib/logger';
 
 // Force dynamic rendering - no static generation
 export const dynamic = 'force-dynamic';
@@ -67,7 +68,7 @@ export async function GET(
     });
 
   } catch (err) {
-    console.error('API Error:', err);
+    logger.error('API Error:', err instanceof Error ? err.message : err);
     return NextResponse.json({
       error: 'Failed to fetch profile data. Please try again.',
       details: err instanceof Error ? err.message : 'Unknown error'
