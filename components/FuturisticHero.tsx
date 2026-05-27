@@ -44,8 +44,9 @@ export default function FuturisticHero({ examples = ['neal_wu', 'tourist'] }: { 
   // Canvas particles
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvasEl = canvasRef.current;
+    if (!canvasEl) return;
+    const canvas = canvasEl;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     let w = (canvas.width = canvas.clientWidth * devicePixelRatio);
