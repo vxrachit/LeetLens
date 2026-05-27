@@ -26,7 +26,7 @@ export function OverallScoreCard({ metric, color }: OverallScoreCardProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
-      className="glass rounded-2xl p-6 border border-white/6"
+      className="glass neon-card rounded-2xl p-6 border border-white/6 futuristic-bg scanlines"
     >
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
         <div className="flex items-center gap-5">

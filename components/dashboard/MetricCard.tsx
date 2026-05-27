@@ -25,7 +25,7 @@ export function MetricCard({ metric, index, color }: MetricCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.08, duration: 0.4 }}
-      className="glass rounded-2xl p-5 border border-white/6 hover:border-white/10 transition-all duration-300 flex flex-col"
+      className="glass neon-card rounded-2xl p-5 border border-white/6 hover:border-white/10 transition-all duration-300 flex flex-col"
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">

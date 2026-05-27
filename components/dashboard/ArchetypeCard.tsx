@@ -14,7 +14,7 @@ export function ArchetypeCard({ archetype }: ArchetypeCardProps) {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="rounded-3xl p-8 relative overflow-hidden border"
+      className="rounded-3xl p-8 relative overflow-hidden border neon-card"
       style={{
         background: `linear-gradient(135deg, ${archetype.color}08 0%, transparent 60%)`,
         borderColor: `${archetype.color}25`,

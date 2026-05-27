@@ -77,9 +77,22 @@ export function DashboardClient({ username }: { username: string }) {
   const diffTotal = profile.problemStats.easySolved + profile.problemStats.mediumSolved + profile.problemStats.hardSolved;
 
   return (
-    <div className="min-h-screen bg-[#060a18] text-white">
+    <div className="min-h-screen bg-[#060a18] text-white futuristic-bg scanlines">
       <div className="fixed inset-0 pointer-events-none">
         <div className="grid-bg absolute inset-0 opacity-40" />
+        {/* animated orbital orbs */}
+        <motion.div
+          className="absolute -left-32 -top-20 w-72 h-72 rounded-full opacity-30"
+          style={{ background: 'radial-gradient(circle at 30% 30%, rgba(0,212,255,0.18), transparent 30%)' }}
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 40, ease: 'linear' }}
+        />
+        <motion.div
+          className="absolute -right-40 bottom-10 w-96 h-96 rounded-full opacity-20"
+          style={{ background: 'radial-gradient(circle at 70% 70%, rgba(167,139,250,0.12), transparent 40%)' }}
+          animate={{ rotate: -360 }}
+          transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
+        />
         <div
           className="absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full blur-[100px] opacity-15"
           style={{ background: archetype.color }}
