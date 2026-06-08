@@ -12,7 +12,7 @@ LeetLens is a lightweight, open-source Next.js app for analyzing and comparing L
 - Next.js (App Router)
 - React + Tailwind CSS
 - TypeScript
-
+- Server-side routes for GitHub OAuth and LeetCode requests
 
 ## Quick Start
 
